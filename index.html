@@ -5,70 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chinx • Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="script.js"></script>
+
+  <!-- Optional: Google Fonts for a softer aesthetic -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- Navbar -->
   <nav class="navbar">
     <h1 class="brand">My Portfolio</h1>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button id="themeToggle" class="theme-btn" aria-label="Toggle light and dark theme">🌙</button>
   </nav>
 
   <main id="main">
     <!-- Hero -->
-    <section id="hero" class="hero">
+    <section id="hero" class="hero fade-in">
       <div class="hero-content">
         <h1 id="hero-title">Hi! I’m <span class="accent">Chinx</span>.</h1>
         <p>Running on caffeine, code, and questionable decisions.</p>
-        <button>Learn More</button>
+        <a href="#about" class="btn">Learn More</a>
       </div>
     </section>
 
     <!-- About -->
-    <section id="about" class="section">
+    <section id="about" class="section fade-in">
       <h2 id="about-title">About Chinx</h2>
-      <p>Hi! I'm Chinx. I'm not really a gamer, but I've been loyal to only one game for years: Ragnarok Mobile Eternal Love.
-        It's my stress reliever and my go-to escape when I'm not teaching, researching, or doing small freelance projects for
-        friends. I've been away from hardcore programming and software development for about ten years, but I like to think
-        I'm still developing something important — students. As an IT and Computer Science instructor, I teach, guide, debug,
-        and sometimes play the role of tech support and motivational speaker at the same time. I also enjoy doing research,
-        data analysis, and statistics, because numbers have their own stories and I love figuring out what they mean. My path
-        shifted from building systems to building people, and it has been both challenging and rewarding in the best way possible.</p>
+      <p>
+        Hi! I'm Chinx. I'm not really a gamer, but I've been loyal to only one game for years:
+        <strong>Ragnarok Mobile Eternal Love</strong>. It’s my stress reliever and my go-to escape when I’m not teaching,
+        researching, or doing small freelance projects for friends. I've been away from hardcore programming and software
+        development for about ten years, but I like to think I’m still developing something important — students.
+        As an IT and Computer Science instructor, I teach, guide, debug, and sometimes play the role of tech support and
+        motivational speaker at the same time. I also enjoy doing research, data analysis, and statistics because numbers
+        have their own stories and I love figuring out what they mean. My path shifted from building systems to building
+        people, and it has been both challenging and rewarding in the best way possible.
+      </p>
     </section>
 
-<!--Projects-->
-<section id="projects" class="section">
-  <h2>My Projects</h2>
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Project 1</h3>
-      <p>Information here</p>
-    </div>
-    <div class="project-card">
-      <h3>Project 2</h3>
-      <p>Information here</p>
-    </div>
-  </div>
-</section>
+    <!-- Projects -->
+    <section id="projects" class="section fade-in">
+      <h2>My Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Project 1</h3>
+          <p>Information here.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 2</h3>
+          <p>Information here.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 3</h3>
+          <p>Information here.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section fade-in">
       <h2 id="contact-title">Contact</h2>
-      <p>Got questions, ideas, or just want to geek out over code? <a href="mailto:chinx026@gmail.com">Message me</a>!</p>
+      <p>Got questions, ideas, or just want to geek out over code? 
+        <a href="mailto:chinx026@gmail.com">Message me</a>!</p>
+
+      <form id="contactForm">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" rows="5" required></textarea>
+        <button type="submit">Send</button>
+      </form>
     </section>
   </main>
 
-  <footer class="section" role="contentinfo">
+  <!-- Footer -->
+  <footer class="section fade-in">
     <p>&copy; <span id="year"></span> Chinx. All rights reserved.</p>
   </footer>
 
-  <!-- Footer -->
+  <!-- Scripts -->
   <script>
-    // tiny enhancement: current year in footer
+    // Display current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Fade-in animation on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    window.addEventListener('scroll', () => {
+      faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) el.classList.add('show');
+      });
+    });
+
+    // Theme toggle (light/dark)
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-theme');
+      toggleBtn.textContent = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+    });
   </script>
 </body>
+<script>
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem('theme'); // 'dark' | 'light' | null
+  if (savedTheme === 'dark') document.body.classList.add('dark');
+
+  // Button label/icon
+  const themeBtn = document.getElementById('themeToggle');
+  function updateThemeButton() {
+    const dark = document.body.classList.contains('dark');
+    themeBtn.textContent = dark ? 'Light' : 'Dark';
+  }
+  updateThemeButton();
+
+  // Toggle + persist
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const dark = document.body.classList.contains('dark');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    updateThemeButton();
+  });
+</script>
 </html>

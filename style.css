@@ -1,0 +1,146 @@
+body {
+  font-family: "Poppins", Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #FFF8FB; 
+  color: #4A4A4A;
+  margin: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: linear-gradient(to right, #FFC1CC, #FFD1E3); 
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.brand {
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #FFF5BA; 
+}
+
+/* HERO SECTION */
+.hero {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #FFD6E0, #C3E8E4); 
+  text-align: center;
+  color: #4A4A4A;
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 2.8rem;
+  color: #4A4A4A;
+}
+
+.accent {
+  color: #E86AA0; 
+}
+
+.hero-content p {
+  font-size: 1.1rem;
+  margin: 10px 0 25px;
+  color: #555;
+}
+
+.hero-content button {
+  background-color: #E86AA0;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hero-content button:hover {
+  background-color: #FF8FB1;
+  transform: scale(1.05);
+}
+
+/* SECTION STYLING */
+.section {
+  padding: 80px 10%;
+  text-align: center;
+  background-color: #fff;
+  border-top: 4px solid #FFE3ED;
+}
+
+.section h2 {
+  color: #E86AA0;
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.section a {
+	color:cadetblue;
+	text-decoration: none;
+}
+
+/* PROJECT GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: #FFF9FB;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+  color: #E86AA0;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  color: #555;
+}
+
+/* FOOTER */
+footer {
+  background-color: #FFC1CC;
+  color: #2c2b2b;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 0.9rem;
+  margin-top: 50px;
+}
